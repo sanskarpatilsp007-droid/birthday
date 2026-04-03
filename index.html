@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Riya ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive;
+    overflow-x: hidden;
+}
+
+/* Stars background */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('yourphoto.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* ⭐ MOST IMPORTANT */
+}
+@keyframes moveStars {
+    from {background-position: 0 0;}
+    to {background-position: 1000px 1000px;}
+}
+
+/* Title */
+h1, p, .typing {
+    text-shadow: 2px 2px 10px black;
+}
+@keyframes glow {
+    from {text-shadow: 0 0 10px pink;}
+    to {text-shadow: 0 0 40px red;}
+}
+
+/* Heart Photo */
+.heart-frame {
+    width: 50vw;
+    height: 50vw;
+    max-width: 260px;
+    max-height: 260px;
+    margin: 20px auto;
+    background: url('riya.jpeg') center/cover;
+    clip-path: polygon(50% 15%, 61% 0, 75% 0, 100% 25%, 100% 60%, 50% 100%, 0 60%, 0 25%, 25% 0, 39% 0);
+    animation: beat 1s infinite;
+}
+@keyframes beat {
+    0%,100% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+}
+
+/* Text */
+.typing {
+    font-size: 4vw;
+    max-width: 90%;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white;
+    animation: typing 6s steps(50), blink .5s infinite;
+}
+
+p {
+    font-size: 3.8vw;
+    padding: 0 10px;
+}
+
+/* Desktop adjustments */
+@media (min-width: 768px) {
+    h1 { font-size: 40px; }
+    .typing { font-size: 20px; }
+    p { font-size: 18px; }
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: pink;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px pink;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: red;
+    color: white;
+    box-shadow: 0 0 25px red;
+}
+
+/* Video */
+video {
+    width: 80%;
+    max-width: 350px;
+    border-radius: 10px;
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    color: red;
+    animation: float 5s linear infinite;
+}
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+@keyframes giftBounce {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+@keyframes popupAnim {
+    from { transform: scale(0.6); opacity:0; }
+    to { transform: scale(1); opacity:1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<h1>Happy Birthday Riya 💖</h1>
+
+<div class="heart-frame"></div>
+
+<div class="typing">
+    You are my happiness, my peace, my everything... 💕
+</div>
+
+<p>
+    Every heartbeat of mine says your name ❤️<br>
+    I will love you forever and always 😘
+</p>
+
+<!-- Video -->
+<video controls>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<br>
+
+<button onclick="proposal()">💍 Click Here</button>
+<!-- Music -->
+<audio autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Gift click → Letter
+function openGift() {
+    document.getElementById("popupContent").innerHTML = `
+        <h2>💌 For You Riya</h2>
+        <p>
+        You are the most special person in my life 💖<br>
+        Every moment with you feels magical ✨<br><br>
+        I want to ask you something... 😘
+        </p>
+        <button onclick="showProposal()">Next 💍</button>
+    `;
+}
+
+// Letter → Proposal
+function showProposal() {
+    document.getElementById("popupContent").innerHTML = `
+        <h2>Riya 💖</h2>
+        <p>Will you stay with me forever? 😘</p>
+
+        <button onclick="yesLove()">Yes 💍</button>
+        <button onclick="noLove()">No 😏</button>
+    `;
+}
+function proposal() {
+    document.getElementById("lovePopup").style.display = "flex";
+}
+
+function yesLove() {
+    document.getElementById("lovePopup").innerHTML = `
+        <h1 style="
+        font-size:40px;
+        color:white;
+        text-shadow:0 0 30px pink;
+        ">I LOVE YOU RIYA ❤️😍</h1>
+    `;
+
+    for(let i=0;i<30;i++){
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position="absolute";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.top = Math.random()*100 + "vh";
+        heart.style.fontSize = "20px";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),2000);
+    }
+}
+function noLove() {
+    let btn = event.target;
+    btn.style.position = "absolute";
+    btn.style.top = Math.random()*80 + "%";
+    btn.style.left = Math.random()*80 + "%";
+}
+// Hearts
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (10 + Math.random()*20) + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+},300);
+</script>
+<div id="lovePopup" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+">
+
+<div id="popupContent" style="
+background: linear-gradient(135deg, #ff4e50, #ff6a88);
+padding:35px;
+border-radius:25px;
+text-align:center;
+color:white;
+box-shadow: 0 0 40px rgba(255, 0, 100, 0.9);
+animation: popupAnim 0.4s ease;
+">
+
+<!-- 🎁 GIFT -->
+<div onclick="openGift()" style="
+font-size:60px;
+cursor:pointer;
+animation: giftBounce 1s infinite alternate;
+">
+🎁
+</div>
+
+<p>Click your surprise 🎁💖</p>
+
+</div>
+</div>
+</body>
+</html>
